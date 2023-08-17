@@ -1,4 +1,4 @@
-namespace Minimal.Api;
+namespace Minimal.Api.Data;
 
 public static class WeatherData
 {
