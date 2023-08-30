@@ -4,10 +4,11 @@ services:
 
   db:
     image: postgres:latest
+    container_name: books-ef-core
     restart: always
     environment:
-      - POSTGRES_USER=course
-      - POSTGRES_PASSWORD=changeme
-      - POSTGRES_DB=movies-dapper
+      - POSTGRES_USER=min-api
+      - POSTGRES_PASSWORD=min-api
+      - POSTGRES_DB=library-ef-core
     ports:
       - '5432:5432'

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minimal.Api", "Minimal.Api\Minimal.Api.csproj", "{DA4C168C-70B8-41E9-BE6E-122325E0FE17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Api", "Library.Api\Library.Api.csproj", "{7C53E161-6C5D-416D-912B-43FFC9082176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{DA4C168C-70B8-41E9-BE6E-122325E0FE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA4C168C-70B8-41E9-BE6E-122325E0FE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA4C168C-70B8-41E9-BE6E-122325E0FE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C53E161-6C5D-416D-912B-43FFC9082176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C53E161-6C5D-416D-912B-43FFC9082176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C53E161-6C5D-416D-912B-43FFC9082176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C53E161-6C5D-416D-912B-43FFC9082176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
