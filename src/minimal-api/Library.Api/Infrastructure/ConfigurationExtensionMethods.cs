@@ -1,4 +1,6 @@
-﻿using Url.Api.Models;
+﻿using Library.Api.Models;
+using Microsoft.AspNetCore.Identity;
+using Url.Api.Models;
 
 namespace Library.Api.Data;
 
@@ -13,4 +15,23 @@ public static class ConfigurationExtensionMethods
         return services;
     }
 
+    public static IServiceCollection AddIdentity(this IServiceCollection services)
+    {
+        services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+        services.AddAuthorizationBuilder();
+        services.AddDbContext<IdentityDbContext>();
+        services.AddIdentityCore<BaseUser>()
+            .AddEntityFrameworkStores<IdentityDbContext>()
+           .AddApiEndpoints();
+
+        return services;
+    }
+
+    public static IServiceCollection AddSwagger(this IServiceCollection services)
+    {
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+        
+        return services;
+    }
 }

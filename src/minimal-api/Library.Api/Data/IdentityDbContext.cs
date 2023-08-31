@@ -1,30 +1,29 @@
 ﻿using System.Reflection;
 using Library.Api.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Url.Api.Models;
 
 namespace Library.Api.Data;
 
-public class LibraryDbContext : DbContext
+public class IdentityDbContext : IdentityDbContext<BaseUser>
 {
-    public DbSet<Book> Books { get; set; } = default!;
     private readonly IOptions<DatabaseOptions> _dbOptions;
 
-    public LibraryDbContext(DbContextOptions<LibraryDbContext> options, IOptions<DatabaseOptions> dbOptions) : base(options)
+    public IdentityDbContext(DbContextOptions<IdentityDbContext> options, IOptions<DatabaseOptions> dbOptions) : base(options)
     {
         _dbOptions = dbOptions;
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.LibraryConnectionString);
+        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.IdentityConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultSchema(Schemas.Identity.ToString());
         base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
-}
+    }}
