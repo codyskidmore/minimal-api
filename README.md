@@ -11,4 +11,4 @@ Run
 
 Use the Swagger endpoints to register an account an login. Copy the access token to the Authorization input field.
 
-~~~~You can also import the supplied Postman collection and run the workflow.
+You can also import the supplied Postman collection and run the workflow.
