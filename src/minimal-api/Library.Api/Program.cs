@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration;
 
-builder.Services.AddSwagger();
+builder.Services.AddLibraryApiVersioning();
+builder.Services.AddApiSwaggerOptions();
 builder.Services.AddIdentity();
 builder.Services.AddDatabase(config);
 
@@ -19,7 +20,7 @@ app.MapIdentityApi<BaseUser>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseApiSwaggerUI();
 }
 
 app.MapApiEndpoints();

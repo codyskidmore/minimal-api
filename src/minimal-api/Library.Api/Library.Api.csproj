@@ -27,7 +27,6 @@
       </PackageReference>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.7.23375.6" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0-preview.7.23375.6" />
-      <PackageReference Include="Microsoft.OpenApi" Version="1.6.6" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.7" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 
