@@ -18,7 +18,7 @@ public class LibraryDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.LibraryConnectionString);
+        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

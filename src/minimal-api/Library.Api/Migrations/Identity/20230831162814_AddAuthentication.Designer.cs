@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Library.Api.Migrations.IdentityDb
+namespace Library.Api.Migrations.Identity
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20230831125226_AddAuthentication")]
+    [Migration("20230831162814_AddAuthentication")]
     partial class AddAuthentication
     {
         /// <inheritdoc />

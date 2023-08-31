@@ -6,9 +6,14 @@ services:
     image: postgres:latest
     container_name: books-ef-core
     restart: always
+    volumes:
+      - minimal-api-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=min-api
       - POSTGRES_PASSWORD=min-api
       - POSTGRES_DB=library-ef-core
     ports:
       - '5432:5432'
+
+volumes:
+  minimal-api-data:

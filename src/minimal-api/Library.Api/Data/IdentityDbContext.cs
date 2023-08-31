@@ -18,7 +18,7 @@ public class IdentityDbContext : IdentityDbContext<BaseUser>
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.IdentityConnectionString);
+        if (!optionsBuilder.IsConfigured) optionsBuilder.UseNpgsql(_dbOptions.Value.ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
