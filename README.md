@@ -1,10 +1,10 @@
 # Minimal API Reference Application
 
-Use PostgreSQL, EF Core, & .NET 8's new Identity scaffolding. To run the app, do the following.
+Uses PostgreSQL, EF Core, & .NET 8's new Identity scaffolding. To run the app, do the following.
 
 Run
 ```console
-   docker compose up --detach
+   docker compose up -d
    dotnet ef database update --context IdentityDbContext
    dotnet run
 ```
