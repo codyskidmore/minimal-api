@@ -1,15 +1,32 @@
 ﻿using Asp.Versioning;
+using FluentValidation;
+using Library.Api.Data;
 using Library.Api.Models;
+using Library.Api.Services;
 using Library.Api.Swagger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Url.Api.Models;
 
-namespace Library.Api.Data;
+namespace Library.Api.Infrastructure;
 
 public static class ConfigurationExtensionMethods
 {
+    public static IServiceCollection AddMovieApiCache(this IServiceCollection services, CacheSettings cacheSettings)
+    {
+        services.AddOutputCache(x =>
+        {
+            x.AddBasePolicy(c => c.Cache());
+            x.AddPolicy(cacheSettings.PolicyName, c => 
+                c.Cache()
+                    .Expire(TimeSpan.FromMinutes(cacheSettings.Expiration))
+                    .SetVaryByQuery(cacheSettings.QueryKeys)
+                    .Tag(cacheSettings.TagName));
+        });
+        return services;
+    }
+
     public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration config)
     {
         services.Configure<DatabaseOptions>(
@@ -50,6 +67,19 @@ public static class ConfigurationExtensionMethods
         services.AddSwaggerGen(x => x.OperationFilter<SwaggerDefaultValues>());
         return services;
     }
+
+    public static IServiceCollection AddValidation(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>(ServiceLifetime.Singleton);
+        return services;
+    }
+
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        services.AddTransient<IBookService, BookService>();
+        return services;
+    }
+    
     public static WebApplication UseApiSwaggerUI(this WebApplication app)
     {
         app.UseSwaggerUI(x =>

@@ -12,7 +12,12 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
         builder.Property(e => e.Id).UseIdentityColumn();
         builder.Property(e => e.Guid).IsRequired();
         builder.Property(e => e.Author).IsRequired();
-        builder.Property(e => e.Isbn).IsRequired();
+        
+        builder.Property(e => e.Isbn)
+            .HasColumnType("varchar(13)")
+            .IsRequired();
+        builder.HasIndex(e => e.Isbn).IsUnique();
+        
         builder.Property(e => e.Title)
             .HasColumnType("varchar(50)")
             .IsRequired();
